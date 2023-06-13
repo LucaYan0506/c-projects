@@ -125,7 +125,7 @@ void findSTU(char* name) {
 	if (!found)//如果学生没找到
 		printf("此学生不存在");
 
-	free(students); // Don't forget to free the dynamically allocated memory
+	free(students); //释放内存空间
 }
 
 void sortSTU() {
@@ -153,7 +153,7 @@ void sortSTU() {
 	//更新文件
 	for (int i = 0; i < size; i++)
 		saveSTU(students[i]);
-	free(students); // Don't forget to free the dynamically allocated memory
+	free(students); //释放内存空间
 }
 
 void insertSTU2(int pos) {
