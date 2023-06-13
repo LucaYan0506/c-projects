@@ -33,7 +33,6 @@ struct STUDENT* readSTU(int* size) {
 		return NULL;
 	}
 
-	// Count the number of lines in the file
 	*size = 0;
 	char temp;
 	while ((temp = fgetc(scoreFile)) != EOF) {
@@ -45,7 +44,7 @@ struct STUDENT* readSTU(int* size) {
 	struct STUDENT* students = malloc(*size * sizeof(struct STUDENT));
 
 	if (students == NULL) {
-		printf("Memory allocation failed.\n");
+		printf("读取内存失败\n");
 		fclose(scoreFile);
 		return NULL;
 	}
