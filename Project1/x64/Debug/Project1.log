@@ -1,2 +1,11 @@
-﻿  stock_system2.c
+﻿  student_system.c
+C:\Users\lucay\Desktop\Project1\Project1\student_system.c(43,29): warning C4013: 'malloc' undefined; assuming extern returning int
+C:\Users\lucay\Desktop\Project1\Project1\student_system.c(43,18): warning C4047: 'initializing': 'STUDENT *' differs in levels of indirection from 'int'
+C:\Users\lucay\Desktop\Project1\Project1\student_system.c(100,2): warning C4013: 'free' undefined; assuming extern returning int
+C:\Users\lucay\Desktop\Project1\Project1\student_system.c(110,7): warning C4013: 'strcmp' undefined; assuming extern returning int
+C:\Users\lucay\Desktop\Project1\Project1\student_system.c(180,13): warning C4013: 'realloc' undefined; assuming extern returning int
+C:\Users\lucay\Desktop\Project1\Project1\student_system.c(180,63): warning C4047: '=': 'STUDENT *' differs in levels of indirection from 'int'
+C:\Users\lucay\Desktop\Project1\Project1\student_system.c(225,2): warning C4013: 'system' undefined; assuming extern returning int
+C:\Users\lucay\Desktop\Project1\Project1\student_system.c(270,3): warning C4013: 'exit' undefined; assuming extern returning int
+C:\Users\lucay\Desktop\Project1\Project1\student_system.c(208,9): warning C4101: 'pos': unreferenced local variable
   Project1.vcxproj -> C:\Users\lucay\Desktop\Project1\x64\Debug\Project1.exe

@@ -1,6 +1,5 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-
 struct STUDENT {
 	int id;
 	char name[50];
@@ -155,40 +154,44 @@ void sortSTU() {
 	free(students); //释放内存空间
 }
 
-void insertSTU2(int pos) {
-	int size;
+void insertSTU2() {
+	sortSTU();
+	int size, i;
 	struct STUDENT* students = readSTU(&size);
 
-	if (pos >= size) {
-		insertSTU(1);
-		free(students); //释放内存空间
+	struct STUDENT newSTU;						//储存新的学生信息
+	newSTU.averageScore = 0;					//赋予初始值
 
-		return;				//结束这个函数
+	printf("请输入学生学号：");
+	scanf("%d", &newSTU.id);
+	printf("请输入学生姓名：");
+	scanf("%s", newSTU.name);
+	for (i = 0; i < 3; i++) {
+		printf("请输入学生第%d门课成绩：", i + 1);
+		scanf("%d", &newSTU.scores[i]);
+		newSTU.averageScore += newSTU.scores[i];
 	}
 
-	//加了一个学生，所以size++
+	newSTU.averageScore /= 3.0;
+
+	//要加一个学生，所以size++
 	size++;
 	//从新给students内存
 	students = realloc(students, (size) * sizeof(struct STUDENT));
 
-	//从pos到最后一个的学生都往后移一格
-	for (int i = size - 1; i > pos; i--)
-		students[i] = students[i - 1];
-	
-
-	//加一个学生
-	students[pos].averageScore = 0;			//赋予初始值
-
-	printf("请输入学生学号：");
-	scanf("%d", &students[pos].id);
-	printf("请输入学生姓名：");
-	scanf("%s", students[pos].name);
-	for (int i = 0; i < 3; i++) {
-		printf("请输入学生第%d门课成绩：", i + 1);
-		scanf("%d", &students[pos].scores[i]);
-		students[pos].averageScore += students[pos].scores[i];
+	//对比, size - 1 因为我们在上面那行size++。但是目前来说最后一个元素是空的
+	for (i = 0; i < size - 1; i++) {
+		if (students[i].averageScore < newSTU.averageScore) {
+			//如果student[i]的平均值小于新的学生，那么从i开始往后移一格
+			int j;
+			for (j = size - 1; j > i; j--)//从最后一个开始移
+				students[j] = students[j - 1];
+			
+			//插入新学生
+			students[i] = newSTU;
+		}
 	}
-	students[pos].averageScore /= 3.0;
+
 
 	//删除文件里原有的信息
 	FILE* file = fopen("score.txt", "w");
@@ -256,9 +259,7 @@ void menu()
 		system("cls");
 		break;
 	case 5:
-		printf("请输入插入学生的位置(0是第一个位置）:");
-		scanf("%d", &pos);
-		insertSTU2(pos);							//插入学生信息
+		insertSTU2();							//插入学生信息
 		getchar();
 		printf("\n请按回车主菜单\n");
 		getchar();
