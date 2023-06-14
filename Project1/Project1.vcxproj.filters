@@ -24,6 +24,12 @@
     <ClCompile Include="BigInt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="stock_system.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stock_system2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fraction.h">
