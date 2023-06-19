@@ -131,6 +131,7 @@
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdcpp17</LanguageStandard>
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdcpp17</LanguageStandard>
     </ClCompile>
+    <ClCompile Include="shop_system.c" />
     <ClCompile Include="stock_system.c" />
     <ClCompile Include="stock_system2.c" />
     <ClCompile Include="student_system.c" />

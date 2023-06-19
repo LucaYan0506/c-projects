@@ -135,7 +135,7 @@ void menu()
 	printf("\t\t\t输入选项，按回车进入选项:                             \n");
 	printf("请输入相应的数字，进行相应的操作:\n");
 	scanf_s("%d", &command);
-	system("cls");
+	system("cls");		//清理cmd（运行命令提示窗口）
 
 	switch (command)
 	{
@@ -146,14 +146,14 @@ void menu()
 		getchar();
 		printf("\n请按回车主菜单\n");
 		getchar();
-		system("cls");
+		system("cls");		//清理cmd（运行命令提示窗口）
 		break;
 	case 2:
 		viewStock();						      //显示商品信息
 		getchar();
 		printf("\n请按回车主菜单\n");
 		getchar();
-		system("cls");
+		system("cls");		//清理cmd（运行命令提示窗口）
 		break;
 	case 3:
 		printf("请输入您要查找的商品编号:");
@@ -162,7 +162,7 @@ void menu()
 		getchar();
 		printf("\n请按回车主菜单\n");
 		getchar();
-		system("cls");
+		system("cls");		//清理cmd（运行命令提示窗口）
 		break;
 	case 4:
 		printf("请输入您要删除的商品编号:");
@@ -171,7 +171,7 @@ void menu()
 		getchar();
 		printf("\n请按回车主菜单\n");
 		getchar();
-		system("cls");
+		system("cls");		//清理cmd（运行命令提示窗口）					
 		break;
 		break;
 
@@ -180,7 +180,7 @@ void menu()
 		exit(0);
 	default:
 		printf("您输入的指令不正确，请重新输入");
-		getchar();
+		getchar();			//假设输入指令的时候我们输入的不是一个数字，scanf只会读取数字的部分，也就是说\n是"留在terminal上的"。通过getchar清除\n
 	}
 }
 

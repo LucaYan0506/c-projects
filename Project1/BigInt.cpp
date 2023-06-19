@@ -109,7 +109,7 @@ public:
     }
 };
 
-int main3() {
+int main() {
     CbigInt a("12344556");
     CbigInt b("54656");
     CbigInt c("");

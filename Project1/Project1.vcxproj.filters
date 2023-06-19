@@ -30,6 +30,9 @@
     <ClCompile Include="stock_system2.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="shop_system.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fraction.h">

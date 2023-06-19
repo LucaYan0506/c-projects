@@ -1,5 +1,6 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+
 struct STUDENT {
 	int id;
 	char name[50];
@@ -7,17 +8,17 @@ struct STUDENT {
 	float averageScore;
 };
 
-void saveSTU(struct STUDENT stu) {
-	FILE* scoreFile = fopen("score.txt", "a");
-	if (scoreFile != NULL) {
+void saveSTU(struct STUDENT stu) { //学生信息作为参数
+	FILE* scoreFile = fopen("score.txt", "a"); //打开文件
+	if (scoreFile != NULL) {					//确保文件能打开
+		//储存信息
 		fprintf(scoreFile, "%d ", stu.id);
 		fprintf(scoreFile, "%s ", stu.name);
 		for (int i = 0; i < 3; i++)
 			fprintf(scoreFile,"%d ", stu.scores[i]);
 		fprintf(scoreFile,"%.6f \n", stu.averageScore);
 
-
-		fclose(scoreFile);
+		fclose(scoreFile);//关闭文件
 		printf("学生输入成功!\n");
 	}
 	else {
@@ -25,30 +26,30 @@ void saveSTU(struct STUDENT stu) {
 	}
 }
 
-struct STUDENT* readSTU(int* size) {
-	FILE* scoreFile = fopen("score.txt", "r");
-	if (scoreFile == NULL) {
+struct STUDENT* readSTU(int* size) {  //学生数量作为参数（注意这里的参数是一个指针，也就是说这个函数可以改变size在外部的数据）    这个函数返回的是STUDENT指针，也就是说可以通过下标找到第n个学生的信息
+	FILE* scoreFile = fopen("score.txt", "r"); //打开文件
+	if (scoreFile == NULL) { //如果打开失败
 		printf("文件打开失败.\n");
-		return NULL;
+		return NULL; //返回空值
 	}
 
 	*size = 0;
 	char temp;
-	while ((temp = fgetc(scoreFile)) != EOF) {
-		if (temp == '\n') {
-			(*size)++;
+	while ((temp = fgetc(scoreFile)) != EOF) {//读取文件里的字符
+		if (temp == '\n') {						/*如果当前值为\n,那么也就是说我们读取到了一行的结尾*/
+			(*size)++;//每一行代表着一个学生，所以size + 1
 		}
 	}
 	
-	struct STUDENT* students = malloc(*size * sizeof(struct STUDENT));
+	struct STUDENT* students = malloc(*size * sizeof(struct STUDENT)); //赋予内存
 
-	if (students == NULL) {
+	if (students == NULL) { //如果赋予失败
 		printf("读取内存失败\n");
 		fclose(scoreFile);
 		return NULL;
 	}
 
-	rewind(scoreFile);
+	rewind(scoreFile); //从头开始读取scorefile
 	for (int i = 0; i < *size; i++){
 		//读取学生信息
 		fscanf(scoreFile, "%d", &students[i].id);
@@ -80,13 +81,13 @@ void insertSTU(int n) {
 		}
 
 		currSTU.averageScore /= 3.0;
-		saveSTU(currSTU);
+		saveSTU(currSTU);				//储存学生信息
 	}
 }
 
 void showSTU() {
-	int size;
-	struct STUDENT* students = readSTU(&size);
+	int size; //定义一个空的变量，这个变量会根据学生的数量而改变
+	struct STUDENT* students = readSTU(&size); //通过readSTU函数读取学生信息
 
 	for (int i = 0; i < size; i++) {
 		//显示学生信息
@@ -101,8 +102,8 @@ void showSTU() {
 }
 
 void findSTU(char* name) {
-	int size;
-	struct STUDENT* students = readSTU(&size);
+	int size;	//定义一个空的变量，这个变量会根据学生的数量而改变
+	struct STUDENT* students = readSTU(&size); //通过readSTU函数读取学生信息
 
 	int found = 0;
 
@@ -130,7 +131,7 @@ void sortSTU() {
 	int size;
 	struct STUDENT* students = readSTU(&size);
 
-	//Selection  sort
+	//选择排序
 	for (int i = 0; i < size; i++)
 	{
 		int maxAverageScoreIndex = i;

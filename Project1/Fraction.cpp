@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include "fraction.h"
 
-int main1() {
+int main() {
 
     fraction f1(1,2); // 表示1/2
     fraction f2(1.2, 0.5); // 表示1.2/0.5
