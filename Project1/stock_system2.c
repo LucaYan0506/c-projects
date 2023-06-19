@@ -1,13 +1,13 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
-#define MAX_LENGTH 100
-struct Stock {
+#define MAX_LENGTH 100									//商品数量上限
+struct Stock {//Stock结构体
 	int id;												//商品编号是独一无二的
 	char name[50];
 	float price;
 	int quantity;
-}stock[MAX_LENGTH];
+}stock[MAX_LENGTH];	//结构体数组(长度为MAX_LENGHT)
 
 int count = 0;											//商品的数量
 
